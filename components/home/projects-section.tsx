@@ -8,11 +8,8 @@ import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa'
 import {
   Div,
-  H2,
-  P,
   defaultContainerVariants,
   itemVariants,
-  textVariants,
 } from '@/constants/animation'
 import InViewSection from '../ui/Custom-ui/framer-motion/in-view-section'
 
@@ -41,25 +38,19 @@ export default function ProjectsSection({
 
   return (
     <InViewSection className='py-20 px-4' variants={defaultContainerVariants}>
-      <Div className='max-w-7xl mx-auto'>
+      <div className='max-w-7xl mx-auto'>
         {/* Section Header */}
         <Div className='text-center mb-16' variants={itemVariants}>
-          <H2
-            className='text-4xl md:text-5xl font-bold text-accent mb-6'
-            variants={textVariants}
-          >
+          <h2 className='text-4xl md:text-5xl font-bold text-accent mb-6'>
             {dictionary.title}
-          </H2>
-          <P
-            className='text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed'
-            variants={textVariants}
-          >
+          </h2>
+          <p className='text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed'>
             {dictionary.subtitle}
-          </P>
+          </p>
         </Div>
 
         {/* Projects Grid */}
-        <Div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {projects.map((project) => {
             const item = dictionary.items?.[project.key]
             if (!item) return null
@@ -150,17 +141,17 @@ export default function ProjectsSection({
               </Div>
             )
           })}
-        </Div>
+        </div>
 
         {/* CTA */}
         <div className='text-center mt-12'>
-          <Link href={`/${locale}/projects`}>
+          <Link href={`/projects`}>
             <Button className='bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-5.5 text-lg cursor-pointer'>
               {dictionary.viewAll}
             </Button>
           </Link>
         </div>
-      </Div>
+      </div>
     </InViewSection>
   )
 }

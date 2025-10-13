@@ -516,5 +516,64 @@
     "uiux": "مصمم UI/UX",
     "mobile": "مطور تطبيقات جوال",
     "other": "أخرى"
+  },
+  "allProjects": {
+    "title": "عزز عملك بحلول تقنية مبتكرة من",
+    "brand": "ستايلرتك",
+    "description": "استكشف مشاريعنا المبتكرة في ستايلرتك، حيث تلتقي التكنولوجيا الحديثة بالإبداع. انضم إلينا في رحلتنا لتحويل الأفكار إلى واقع!",
+    "featuredTitle": "مشاريعنا المميزة",
+    "featuredSubtitle": "نقدم حلولاً تقنية متكاملة مصممة خصيصًا لتلبية احتياجات عملك.",
+    "cta": {
+      "consultation": "احصل على استشارة مجانية",
+      "viewProjects": "عرض المشاريع",
+      "startProject": "ابدأ مشروعك"
+    },
+    "searchPlaceholder": "تطوير الويب",
+    "selectCategory": "الفئة",
+    "projects": {
+      "mset": {
+        "title": "منصة MSET التعليمية",
+        "description": "منصة تعليمية توفر أدوات وموارد تعليمية للطلاب والمؤسسات، مصممة للتوسع وتجربة مستخدم سلسة.",
+        "category": "التعليم",
+        "image": "/ar-en-Logo.webp",
+        "technologies": ["React", "Next.js", "MongoDB", "Node.js"],
+        "github": "",
+        "live": "https://mset.ly/ar"
+      }
+    },
+    "contactForm": {
+      "heading": "تواصل معنا",
+      "subheading": "اترك معلوماتك وسنعاود الاتصال بك قريبًا.",
+      "nameLabel": "الاسم",
+      "namePlaceholder": "أدخل اسمك الكامل",
+      "phoneLabel": "رقم الهاتف",
+      "phonePlaceholder": "أدخل رقم هاتفك",
+      "sendButton": "إرسال"
+    },
+    "footerTitle": "نبني علاقات تدوم.",
+    "footerSubtitle": "تواصل معنا ولنخلق معًا شيئًا استثنائيًا."
+  },
+  "appointments": {
+    "title": "دعنا نُبدع شيئًا رائعًا معًا",
+    "selectDateTitle": "اختر التاريخ",
+    "selectDateSubtitle": "اختر تاريخًا متاحًا من التقويم",
+    "chooseTimePlatformTitle": "اختر الوقت والمنصة",
+    "availableTimeSlots": "الأوقات المتاحة",
+    "selectPlatform": "اختر المنصة",
+    "alertSelectTime": "يرجى اختيار الوقت قبل اختيار المنصة.",
+    "toastSuccessTitle": "تم تأكيد الحجز بنجاح!",
+    "toastSuccessDescription": "ستتلقى دعوة {platform} الخاصة بك قريبًا.",
+    "successAlert": "تم إرسال طلب الموعد بنجاح!",
+    "dialogTitle": "تأكيد تفاصيل الحجز",
+    "dialogDescription": "أكمل طلب الاجتماع عبر {platform}",
+    "fullNameLabel": "الاسم الكامل",
+    "fullNamePlaceholder": "أدخل اسمك الكامل",
+    "emailLabel": "عنوان البريد الإلكتروني",
+    "emailPlaceholder": "your.email@example.com",
+    "whatsappLabel": "رقم واتساب",
+    "whatsappPlaceholder": "+966 55 555 5555",
+    "infoText": "سيتم إرسال تفاصيل الموعد إلى تقويمك تلقائيًا.",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد الحجز"
   }
 }

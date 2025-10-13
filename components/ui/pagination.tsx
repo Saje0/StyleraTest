@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react'
 import {
   ChevronLeftIcon,
@@ -8,14 +10,19 @@ import {
 import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from '@/components/ui/button'
 
-function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
+interface PaginationProps extends React.ComponentProps<'nav'> {
+  isRTL?: boolean
+}
+
+function Pagination({ className, isRTL, ...props }: PaginationProps) {
+  // 👆 Destructure `isRTL` so it's not spread into <nav>
   return (
     <nav
-      role="navigation"
-      aria-label="pagination"
-      data-slot="pagination"
+      role='navigation'
+      aria-label='pagination'
+      data-slot='pagination'
       className={cn('mx-auto flex w-full justify-center', className)}
-      {...props}
+      {...props} // Safe now — no `isRTL` leaking
     />
   )
 }
@@ -26,7 +33,7 @@ function PaginationContent({
 }: React.ComponentProps<'ul'>) {
   return (
     <ul
-      data-slot="pagination-content"
+      data-slot='pagination-content'
       className={cn('flex flex-row items-center gap-1', className)}
       {...props}
     />
@@ -34,7 +41,7 @@ function PaginationContent({
 }
 
 function PaginationItem({ ...props }: React.ComponentProps<'li'>) {
-  return <li data-slot="pagination-item" {...props} />
+  return <li data-slot='pagination-item' {...props} />
 }
 
 type PaginationLinkProps = {
@@ -51,50 +58,55 @@ function PaginationLink({
   return (
     <a
       aria-current={isActive ? 'page' : undefined}
-      data-slot="pagination-link"
+      data-slot='pagination-link'
       data-active={isActive}
       className={cn(
         buttonVariants({
           variant: isActive ? 'outline' : 'ghost',
           size,
         }),
-        className,
+        className
       )}
       {...props}
     />
   )
 }
 
+interface PaginationNavProps
+  extends React.ComponentProps<typeof PaginationLink> {
+  isRTL?: boolean
+}
+
 function PaginationPrevious({
   className,
+  isRTL,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: PaginationNavProps) {
+  const label = isRTL ? 'السابق' : 'Previous'
   return (
     <PaginationLink
-      aria-label="Go to previous page"
-      size="default"
+      aria-label={label}
+      size='default'
       className={cn('gap-1 px-2.5 sm:pl-2.5', className)}
       {...props}
     >
-      <ChevronLeftIcon />
-      <span className="hidden sm:block">Previous</span>
+      {isRTL ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+      <span className='hidden sm:block'>{label}</span>
     </PaginationLink>
   )
 }
 
-function PaginationNext({
-  className,
-  ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+function PaginationNext({ className, isRTL, ...props }: PaginationNavProps) {
+  const label = isRTL ? 'التالي' : 'Next'
   return (
     <PaginationLink
-      aria-label="Go to next page"
-      size="default"
+      aria-label={label}
+      size='default'
       className={cn('gap-1 px-2.5 sm:pr-2.5', className)}
       {...props}
     >
-      <span className="hidden sm:block">Next</span>
-      <ChevronRightIcon />
+      <span className='hidden sm:block'>{label}</span>
+      {isRTL ? <ChevronLeftIcon /> : <ChevronRightIcon />}
     </PaginationLink>
   )
 }
@@ -106,12 +118,12 @@ function PaginationEllipsis({
   return (
     <span
       aria-hidden
-      data-slot="pagination-ellipsis"
+      data-slot='pagination-ellipsis'
       className={cn('flex size-9 items-center justify-center', className)}
       {...props}
     >
-      <MoreHorizontalIcon className="size-4" />
-      <span className="sr-only">More pages</span>
+      <MoreHorizontalIcon className='size-4' />
+      <span className='sr-only'>More pages</span>
     </span>
   )
 }

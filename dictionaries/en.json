@@ -520,5 +520,64 @@
     "uiux": "UI/UX Designer",
     "mobile": "Mobile Developer",
     "other": "Other"
+  },
+  "allProjects": {
+    "title": "EMPOWER YOUR BUSINESS WITH INNOVATIVE TECH SOLUTIONS FROM",
+    "brand": "STYLERATECH",
+    "description": "Explore our innovative projects at Styleratech, where cutting-edge technology meets creative solutions. Join us on our journey to transform ideas into reality!",
+    "featuredTitle": "Our Featured Projects",
+    "featuredSubtitle": "We provide comprehensive technology solutions tailored to your business needs.",
+    "cta": {
+      "consultation": "Get free consultation",
+      "viewProjects": "View projects",
+      "startProject": "Start a project"
+    },
+    "searchPlaceholder": "web development",
+    "selectCategory": "Category",
+    "projects": {
+      "mset": {
+        "title": "MSET Learning Platform",
+        "description": "MSET is an educational platform providing learning tools and resources for students and institutions, built with scalability and a seamless UX in mind.",
+        "category": "Education",
+        "image": "/ar-en-Logo.webp",
+        "technologies": ["React", "Next.js", "MongoDB", "Node.js"],
+        "github": "",
+        "live": "https://mset.ly/en"
+      }
+    },
+    "contactForm": {
+      "heading": "Get in Touch",
+      "subheading": "Leave your info and we’ll get back to you soon.",
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter your full name",
+      "phoneLabel": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "sendButton": "Send"
+    },
+    "footerTitle": "Building connections that last.",
+    "footerSubtitle": "Reach out and let’s create something extraordinary together."
+  },
+  "appointments": {
+    "title": "Let’s Create Something Brilliant Together",
+    "selectDateTitle": "Select a Date",
+    "selectDateSubtitle": "Choose an available date from the calendar",
+    "chooseTimePlatformTitle": "Choose Time & Platform",
+    "availableTimeSlots": "Available Time Slots",
+    "selectPlatform": "Select Platform",
+    "alertSelectTime": "Please select a time before choosing a platform.",
+    "toastSuccessTitle": "Booking confirmed successfully!",
+    "toastSuccessDescription": "You’ll receive your {platform} invite soon.",
+    "successAlert": "Your appointment request has been sent successfully!",
+    "dialogTitle": "Confirm Your Booking Details",
+    "dialogDescription": "Complete your meeting request for {platform}",
+    "fullNameLabel": "Full Name",
+    "fullNamePlaceholder": "Enter your full name",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "your.email@example.com",
+    "whatsappLabel": "WhatsApp Number",
+    "whatsappPlaceholder": "+1 234 567 890",
+    "infoText": "Your appointment details will be sent to your calendar automatically.",
+    "cancel": "Cancel",
+    "confirm": "Confirm Booking"
   }
 }

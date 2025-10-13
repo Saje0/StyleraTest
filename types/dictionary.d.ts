@@ -257,4 +257,64 @@ interface Dictionary {
       clientSatisfaction: string
     }
   }
+  allProjects?: {
+    title: string
+    brand: string
+    description: string
+    featuredTitle: string
+    featuredSubtitle: string
+    cta: {
+      consultation: string
+      viewProjects: string
+      startProject: string
+    }
+    searchPlaceholder: string
+    selectCategory: string
+    projects: Record<
+      string,
+      {
+        title: string
+        description: string
+        category: string
+        image: string
+        technologies: string[]
+        github?: string
+        live?: string
+      }
+    >
+    contactForm: {
+      heading: string
+      subheading: string
+      nameLabel: string
+      namePlaceholder: string
+      phoneLabel: string
+      phonePlaceholder: string
+      sendButton: string
+    }
+    footerTitle: string
+    footerSubtitle: string
+  }
+  appointments?: {
+    title: string
+    selectDateTitle: string
+    selectDateSubtitle: string
+    chooseTimePlatformTitle: string
+    availableTimeSlots: string
+    selectPlatform: string
+    alertSelectTime: string
+    toastSuccessTitle: string
+    toastSuccessDescription: string
+    successAlert: string
+    dialogTitle: string
+    dialogDescription: string
+    fullNameLabel: string
+    fullNamePlaceholder: string
+    emailLabel: string
+    emailPlaceholder: string
+    whatsappLabel: string
+    whatsappPlaceholder: string
+    infoText: string
+    cancel: string
+    confirm: string
+  }
 }

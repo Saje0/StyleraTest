@@ -25,7 +25,7 @@ const fadeInUp: Variants = {
     const transition: Transition = {
       delay: i * 0.2,
       duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1], // ✅ cubic-bezier for "easeOut"
+      ease: [0.25, 0.1, 0.25, 1],
     }
 
     return {
@@ -46,20 +46,14 @@ export default function TestimonialsSection({
     <InViewSection className='py-24 px-6 relative overflow-hidden bg-background'>
       <div className='max-w-6xl mx-auto'>
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className='text-center mb-20'
-        >
+        <div className='text-center mb-20'>
           <h2 className='text-4xl md:text-5xl font-bold text-accent mb-6'>
             {dictionary.title}
           </h2>
           <p className='text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed'>
             {dictionary.subtitle}
           </p>
-        </motion.div>
+        </div>
 
         {/* Testimonials */}
         <div className='space-y-16'>
