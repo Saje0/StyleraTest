@@ -8,6 +8,13 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from '@/components/ui/select'
 import { Div, P, comeFromBottomItem, textVariants } from '@/constants/animation'
 
 interface JoinTeamFormProps {
@@ -18,17 +25,9 @@ interface JoinTeamFormProps {
 export default function JoinTeamForm({ dictionary, isRTL }: JoinTeamFormProps) {
   const t = dictionary
   if (!t) return null
-  //  Roles
-  const roles = [
-    t.frontend || 'Frontend Developer',
-    t.backend || 'Backend Developer',
-    t.fullstack || 'Full Stack Developer',
-    t.uiux || 'UI/UX Designer',
-    t.mobile || 'Mobile Developer',
-    t.other || 'Other',
-  ]
 
-  //  Validation schema (with i18n)
+  const roles = [t.frontend, t.backend, t.fullstack, t.uiux, t.mobile, t.other]
+
   const applicationSchema = z.object({
     name: z.string().min(2, t.nameError || 'Name is required'),
     email: z.string().email(t.emailError || 'Invalid email'),
@@ -43,6 +42,7 @@ export default function JoinTeamForm({ dictionary, isRTL }: JoinTeamFormProps) {
     handleSubmit,
     formState: { errors, isSubmitting, isSubmitSuccessful },
     reset,
+    setValue,
   } = useForm<ApplicationForm>({
     resolver: zodResolver(applicationSchema),
   })
@@ -90,24 +90,34 @@ export default function JoinTeamForm({ dictionary, isRTL }: JoinTeamFormProps) {
         )}
       </Div>
 
-      {/* Role */}
+      {/* Role — now using Shadcn Select */}
       <Div variants={comeFromBottomItem}>
         <Label className='mb-2 block'>
           {t.roleLabel || "Role you're applying for"}
         </Label>
-        <select
-          {...register('role')}
-          className='w-full rounded-md border border-border bg-transparent px-3 py-2 text-foreground'
+        <Select
+          onValueChange={(value) => setValue('role', value)}
+          defaultValue=''
         >
-          <option value='' className='text-black'>
-            {t.rolePlaceholder || 'Select a role'}
-          </option>
-          {roles.map((r) => (
-            <option key={r} value={r} className='text-black'>
-              {r}
-            </option>
-          ))}
-        </select>
+          <SelectTrigger
+            isRTL={isRTL}
+            className='w-full bg-transparent border border-border text-foreground'
+          >
+            <SelectValue
+              placeholder={t.rolePlaceholder || 'Select a role'}
+              className='text-muted-foreground'
+            />
+          </SelectTrigger>
+          <SelectContent
+            className={`bg-popover text-popover-foreground font-[cairo]`}
+          >
+            {roles.map((r) => (
+              <SelectItem key={r} value={r}>
+                {r}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
         {errors.role && (
           <p className='text-sm text-destructive mt-1'>{errors.role.message}</p>
         )}

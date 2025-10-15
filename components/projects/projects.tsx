@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -19,9 +18,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
-import Image from 'next/image'
-import { ArrowLeft, ArrowRight, ExternalLink, Search } from 'lucide-react'
-import { FaGithub } from 'react-icons/fa'
+import { ArrowLeft, ArrowRight, Search } from 'lucide-react'
 import InViewSection from '@/components/ui/Custom-ui/framer-motion/in-view-section'
 import {
   Div,
@@ -29,13 +26,19 @@ import {
   defaultContainerVariants,
 } from '@/constants/animation'
 import Link from 'next/link'
+import ProjectCard from './project-card'
 
 interface AllProjectsProps {
   dictionary?: Dictionary['allProjects']
   isRTL?: boolean
+  locale: string
 }
 
-export default function AllProjects({ dictionary, isRTL }: AllProjectsProps) {
+export default function AllProjects({
+  dictionary,
+  isRTL,
+  locale,
+}: AllProjectsProps) {
   if (!dictionary) return null
   const projects = Object.values(dictionary.projects || {})
 
@@ -103,7 +106,7 @@ export default function AllProjects({ dictionary, isRTL }: AllProjectsProps) {
               <SelectTrigger className='w-full sm:w-48 bg-slate-800 border-slate-700 text-slate-200'>
                 <SelectValue placeholder={dictionary.selectCategory} />
               </SelectTrigger>
-              <SelectContent className='bg-slate-800 text-slate-200 border-slate-700'>
+              <SelectContent className='bg-slate-800 text-slate-200 border-slate-700 font-[cairo]'>
                 <SelectItem value='all'>{dictionary.selectCategory}</SelectItem>
                 {Array.from(new Set(projects.map((p) => p.category))).map(
                   (category) => (
@@ -118,7 +121,7 @@ export default function AllProjects({ dictionary, isRTL }: AllProjectsProps) {
 
           {/* CTA Button */}
           <Link
-            href='/contact'
+            href={`/${locale}/contact`}
             className='bg-gradient-to-r cursor-pointer from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-2 py-2 flex rounded-sm items-center gap-1 text-lg'
           >
             {dictionary.cta.startProject}
@@ -134,81 +137,16 @@ export default function AllProjects({ dictionary, isRTL }: AllProjectsProps) {
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center'>
           {filteredProjects.length > 0 ? (
             filteredProjects.map((p, index) => (
-              <Card
+              <ProjectCard
                 key={index}
-                className='bg-slate-800/60 border-slate-700 overflow-hidden hover:bg-slate-700/60 transition-all duration-300 group'
-              >
-                {/* Image */}
-                <div className='relative aspect-video overflow-hidden'>
-                  <Image
-                    src={p.image}
-                    alt={p.title}
-                    fill
-                    className='object-cover group-hover:scale-110 transition-transform duration-500'
-                  />
-                </div>
-
-                {/* Content */}
-                <div className='p-6'>
-                  <div className='flex items-center justify-between mb-3'>
-                    <span className='text-blue-400 text-sm font-medium'>
-                      {p.category}
-                    </span>
-                    <div className='flex gap-2'>
-                      {p.github && (
-                        <Button
-                          size='sm'
-                          variant='ghost'
-                          className='h-8 w-8 p-0 text-slate-400 hover:text-white'
-                          asChild
-                        >
-                          <a
-                            href={p.github}
-                            target='_blank'
-                            rel='noopener noreferrer'
-                          >
-                            <FaGithub className='h-4 w-4' />
-                          </a>
-                        </Button>
-                      )}
-                      {p.live && (
-                        <Button
-                          size='sm'
-                          variant='ghost'
-                          className='h-8 w-8 p-0 text-slate-400 hover:text-white'
-                          asChild
-                        >
-                          <a
-                            href={p.live}
-                            target='_blank'
-                            rel='noopener noreferrer'
-                          >
-                            <ExternalLink className='h-4 w-4' />
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-
-                  <h3 className='text-white font-semibold text-lg mb-2'>
-                    {p.title}
-                  </h3>
-                  <p className='text-slate-300 text-sm mb-4 leading-relaxed'>
-                    {p.description}
-                  </p>
-
-                  <div className='flex flex-wrap gap-2'>
-                    {p.technologies.map((tech: string) => (
-                      <span
-                        key={tech}
-                        className='px-2 py-1 bg-slate-700 text-slate-300 text-xs rounded-md'
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Card>
+                title={p.title}
+                description={p.description}
+                image={p.image}
+                category={p.category}
+                technologies={p.technologies}
+                github={p.github}
+                live={p.live}
+              />
             ))
           ) : (
             <p className='text-center text-slate-400 col-span-full text-lg'>
