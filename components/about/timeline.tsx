@@ -69,15 +69,12 @@ export default function Timeline({ dictionary }: TimelineProps) {
             const slideVariants = {
               hidden: {
                 opacity: 0,
-                x: isLeft ? -100 : 100,
+                scale: 0.9,
               },
               visible: {
                 opacity: 1,
-                x: 0,
-                transition: {
-                  duration: 0.6,
-                  ease: 'easeOut' as const,
-                },
+                scale: 1,
+                transition: { duration: 0.6, ease: 'easeOut' as const },
               },
             }
 
